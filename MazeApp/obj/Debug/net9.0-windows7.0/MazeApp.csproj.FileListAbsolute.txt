@@ -17,3 +17,5 @@ C:\Users\samba\source\repos\MazeApp\MazeApp\obj\Debug\net9.0-windows7.0\refint\M
 C:\Users\samba\source\repos\MazeApp\MazeApp\obj\Debug\net9.0-windows7.0\MazeApp.pdb
 C:\Users\samba\source\repos\MazeApp\MazeApp\obj\Debug\net9.0-windows7.0\MazeApp.genruntimeconfig.cache
 C:\Users\samba\source\repos\MazeApp\MazeApp\obj\Debug\net9.0-windows7.0\ref\MazeApp.dll
+C:\Users\samba\source\repos\MazeApp\MazeApp\obj\Debug\net9.0-windows7.0\MazeApp.sourcelink.json
+C:\Users\samba\source\repos\MazeApp\MazeApp\bin\Debug\net9.0-windows7.0\Game\End.exe

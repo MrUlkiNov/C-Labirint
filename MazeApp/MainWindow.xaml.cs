@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,8 +20,8 @@ namespace MazeApp
             { 1, 1, 1, 2, 1 }
         };
 
-        public int PlayerX { get; private set; } = 0;
-        public int PlayerY { get; private set; } = 0;
+        public int PlayerX { get; private set; } = 0; // Начальная позиция игрока по X
+        public int PlayerY { get; private set; } = 0; // Начальная позиция игрока по Y
         public bool IsGameWon { get; private set; } = false;
 
         public MainWindow()
@@ -47,11 +48,11 @@ namespace MazeApp
                 {
                     Rectangle rect = new Rectangle { Width = 50, Height = 50 };
                     if (_maze[i, j] == 1)
-                        rect.Fill = Brushes.White;
+                        rect.Fill = Brushes.White; // Проход
                     else if (_maze[i, j] == 0)
-                        rect.Fill = Brushes.Black;
+                        rect.Fill = Brushes.Black; // Стена
                     else if (_maze[i, j] == 2)
-                        rect.Fill = Brushes.Green;
+                        rect.Fill = Brushes.Green; // Выход
 
                     MazeGrid.Children.Add(rect);
                     Grid.SetRow(rect, i);
@@ -70,7 +71,7 @@ namespace MazeApp
                     int col = Grid.GetColumn(rect);
 
                     if (row == PlayerX && col == PlayerY)
-                        rect.Fill = Brushes.Blue;
+                        rect.Fill = Brushes.Blue; // Позиция игрока
                     else if (_maze[row, col] == 1)
                         rect.Fill = Brushes.White;
                     else if (_maze[row, col] == 2)
@@ -105,7 +106,7 @@ namespace MazeApp
                 if (_maze[PlayerX, PlayerY] == 2)
                 {
                     IsGameWon = true;
-                    StartExternalProgram(); 
+                    StartExternalProgram(); // Запускаем указанный .exe файл
                     ResetGame();
                 }
                 return true;
@@ -125,8 +126,25 @@ namespace MazeApp
         {
             try
             {
-                string exePath = @"C:\Intel\Scream";
-                Process.Start(exePath);
+      
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+   
+                string exePath = System.IO.Path.Combine(baseDirectory, "Game", "End.exe");
+
+
+                if (File.Exists(exePath))
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = exePath,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    MessageBox.Show($"Не удалось найти файл: {exePath}", "Ошибка запуска", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
