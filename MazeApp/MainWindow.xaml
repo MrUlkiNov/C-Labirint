@@ -1,0 +1,9 @@
+﻿<Window x:Class="MazeApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Maze Game" Height="400" Width="400" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid Name="MazeGrid" Margin="10">
+    </Grid>
+</Window>
